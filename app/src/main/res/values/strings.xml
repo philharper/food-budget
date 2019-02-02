@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Food Budget</string>
+    <string name="add_shop_button">Add New Shop</string>
+    <string name="location_text">Location</string>
+    <string name="price_text">Price</string>
+    <string name="date_text">Date</string>
+    <string name="save_shop_button">Save Shop</string>
+
+    <string-array name="locations">
+        <item>Aldi</item>
+        <item>Asda</item>
+        <item>Co-Op</item>
+        <item>Lidl</item>
+        <item>Marks &amp; Spencers</item>
+        <item>Morrisons</item>
+        <item>Sainsburys</item>
+        <item>Tesco</item>
+        <item>Waitrose</item>
+    </string-array>
+</resources>
