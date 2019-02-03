@@ -5,7 +5,7 @@ import uk.co.philharper.foodbudget.entity.Shop
 
 class ShopDao {
 
-    val collection = "shops"
+    private val collection = "shops"
 
     fun saveShop(shop: Shop) {
         val db = FirebaseFirestore.getInstance()

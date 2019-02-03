@@ -5,6 +5,7 @@
     <string name="price_text">Price</string>
     <string name="date_text">Date</string>
     <string name="save_shop_button">Save Shop</string>
+    <string name="select_date_button">Select Date</string>
 
     <string-array name="locations">
         <item>Aldi</item>
