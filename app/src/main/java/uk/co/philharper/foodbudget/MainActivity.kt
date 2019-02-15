@@ -16,4 +16,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, AddShopActivity::class.java)
         startActivity(intent)
     }
+
+    fun viewShops(view: View) {
+        val intent = Intent(this, ViewShopActivity::class.java)
+        startActivity(intent)
+    }
 }
