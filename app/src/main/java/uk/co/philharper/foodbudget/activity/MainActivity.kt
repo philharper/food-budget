@@ -1,9 +1,10 @@
-package uk.co.philharper.foodbudget
+package uk.co.philharper.foodbudget.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import uk.co.philharper.foodbudget.R
 
 class MainActivity : AppCompatActivity() {
 

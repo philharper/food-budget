@@ -1,4 +1,4 @@
-package uk.co.philharper.foodbudget
+package uk.co.philharper.foodbudget.activity
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
+import uk.co.philharper.foodbudget.R
 import uk.co.philharper.foodbudget.dao.PropertiesDao
 import uk.co.philharper.foodbudget.dao.ShopDao
 import uk.co.philharper.foodbudget.entity.Properties

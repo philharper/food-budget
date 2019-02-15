@@ -1,8 +1,9 @@
-package uk.co.philharper.foodbudget
+package uk.co.philharper.foodbudget.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.QuerySnapshot
+import uk.co.philharper.foodbudget.R
 import uk.co.philharper.foodbudget.dao.ShopDao
 import uk.co.philharper.foodbudget.entity.Shop
 
@@ -18,6 +19,8 @@ class ViewShopActivity : AppCompatActivity() {
     }
 
     private fun populateList(document: QuerySnapshot) {
-        document.toObjects(Shop::class.java)
+        val shops = document.toObjects(Shop::class.java)
+
+
     }
 }
