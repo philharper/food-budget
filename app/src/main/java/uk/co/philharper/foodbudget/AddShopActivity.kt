@@ -4,13 +4,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentSnapshot
+import uk.co.philharper.foodbudget.dao.PropertiesDao
 import uk.co.philharper.foodbudget.dao.ShopDao
+import uk.co.philharper.foodbudget.entity.Properties
 import uk.co.philharper.foodbudget.entity.Shop
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddShopActivity : AppCompatActivity() {
 
     private val shopDao = ShopDao()
+    private val propertiesDao = PropertiesDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +33,16 @@ class AddShopActivity : AppCompatActivity() {
                 findViewById<EditText>(R.id.date_input).setText("$day/$month/$year")
                 datePicker.visibility = View.GONE
             })
+
+        propertiesDao.getLocations { document -> onSuccessListener(document) }
     }
 
     fun saveShop(view: View) {
         val location = findViewById<Spinner>(R.id.location_input).selectedItem
         val price = findViewById<TextView>(R.id.price_input).text.toString()
-        val date = findViewById<TextView>(R.id.date_input).text
+        val date = Timestamp(SimpleDateFormat("dd/MM/yyyy").parse(findViewById<TextView>(R.id.date_input).text.toString()))
 
-        val shop = Shop(location.toString(),  price.toFloat(), date.toString())
+        val shop = Shop(location.toString(),  price.toFloat(), date)
 
         shopDao.saveShop(shop)
     }
@@ -43,5 +51,10 @@ class AddShopActivity : AppCompatActivity() {
         val shopDatePicker = findViewById<DatePicker>(R.id.shop_date_picker)
         shopDatePicker.bringToFront()
         shopDatePicker.visibility = View.VISIBLE
+    }
+
+    private fun onSuccessListener(document: DocumentSnapshot) {
+        val locationAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, document.toObject(Properties::class.java)?.locations)
+        findViewById<Spinner>(R.id.location_input).adapter = locationAdapter
     }
 }

@@ -6,16 +6,4 @@
     <string name="date_text">Date</string>
     <string name="save_shop_button">Save Shop</string>
     <string name="select_date_button">Select Date</string>
-
-    <string-array name="locations">
-        <item>Aldi</item>
-        <item>Asda</item>
-        <item>Co-Op</item>
-        <item>Lidl</item>
-        <item>Marks &amp; Spencers</item>
-        <item>Morrisons</item>
-        <item>Sainsburys</item>
-        <item>Tesco</item>
-        <item>Waitrose</item>
-    </string-array>
 </resources>
