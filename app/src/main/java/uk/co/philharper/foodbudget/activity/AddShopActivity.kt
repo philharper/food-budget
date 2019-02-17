@@ -11,12 +11,13 @@ import uk.co.philharper.foodbudget.dao.PropertiesDao
 import uk.co.philharper.foodbudget.dao.ShopDao
 import uk.co.philharper.foodbudget.entity.Properties
 import uk.co.philharper.foodbudget.entity.Shop
+import uk.co.philharper.foodbudget.service.ShopService
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddShopActivity : AppCompatActivity() {
 
-    private val shopDao = ShopDao()
+    private val shopService = ShopService()
     private val propertiesDao = PropertiesDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +46,7 @@ class AddShopActivity : AppCompatActivity() {
 
         val shop = Shop(location.toString(),  price.toFloat(), date)
 
-        shopDao.saveShop(shop)
+        shopService.saveShop(shop)
     }
 
     fun displayDatePicker(view: View) {
