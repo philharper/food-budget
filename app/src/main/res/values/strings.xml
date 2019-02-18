@@ -8,5 +8,6 @@
     <string name="select_date_button">Select Date</string>
     <string name="year_total">Year Total</string>
     <string name="week_total">Week Total</string>
+    <string name="month_total">Month Total</string>
     <string name="default_price">£00.00</string>
 </resources>

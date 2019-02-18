@@ -21,9 +21,11 @@ class ViewShopActivity : AppCompatActivity() {
         shopService.getShops { shopCalculation ->
             val totalSpent = "%.2f".format(shopCalculation.totalSpent)
             val currentWeekTotal = "%.2f".format(shopCalculation.currentWeekTotal)
+            val currentMonthTotal = "%.2f".format(shopCalculation.currentMonthTotal)
 
             findViewById<TextView>(R.id.year_total_value).text = "${currency.symbol}$totalSpent"
             findViewById<TextView>(R.id.week_total_value).text = "${currency.symbol}$currentWeekTotal"
+            findViewById<TextView>(R.id.month_total_value).text = "${currency.symbol}$currentMonthTotal"
         }
 
     }

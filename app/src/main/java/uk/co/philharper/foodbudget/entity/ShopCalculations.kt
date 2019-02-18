@@ -9,12 +9,14 @@ class ShopCalculations(shops: List<Shop>) {
 
     var totalSpent = 0.0
     var currentWeekTotal = 0.0
+    var currentMonthTotal = 0.0
 
     init {
 
         for (shop in shops) {
             addPriceToTotalSpend(shop)
             addPriceToCurrentWeekTotalIfThisWeek(shop)
+            addPriceToCurrentMonthTotal(shop)
         }
     }
 
@@ -32,6 +34,19 @@ class ShopCalculations(shops: List<Shop>) {
         val shopCalendar = createShopCalendar(shop)
         return currentCalendar.get(Calendar.YEAR) == shopCalendar.get(Calendar.YEAR) && currentCalendar.get(Calendar.WEEK_OF_YEAR) == shopCalendar.get(
             Calendar.WEEK_OF_YEAR
+        )
+    }
+
+    private fun addPriceToCurrentMonthTotal(shop: Shop) {
+        if (isShopInCurrentMonth(currentCalendar, shop)) {
+            currentMonthTotal += shop.price
+        }
+    }
+
+    private fun isShopInCurrentMonth(currentCalendar: Calendar, shop: Shop): Boolean {
+        val shopCalendar = createShopCalendar(shop)
+        return currentCalendar.get(Calendar.YEAR) == shopCalendar.get(Calendar.YEAR) && currentCalendar.get(Calendar.MONTH) == shopCalendar.get(
+            Calendar.MONTH
         )
     }
 
