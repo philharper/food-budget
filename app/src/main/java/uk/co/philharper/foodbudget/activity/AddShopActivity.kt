@@ -32,7 +32,7 @@ class AddShopActivity : AppCompatActivity() {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
             DatePicker.OnDateChangedListener { datePicker, year, month, day ->
-                findViewById<EditText>(R.id.date_input).setText("$day/$month/$year")
+                findViewById<EditText>(R.id.date_input).setText("$day/${month + 1}/$year")
                 datePicker.visibility = View.GONE
             })
 
@@ -42,7 +42,7 @@ class AddShopActivity : AppCompatActivity() {
     fun saveShop(view: View) {
         val location = findViewById<Spinner>(R.id.location_input).selectedItem
         val price = findViewById<TextView>(R.id.price_input).text.toString()
-        val date = Timestamp(SimpleDateFormat("dd/MM/yyyy").parse(findViewById<TextView>(R.id.date_input).text.toString()))
+        val date = Timestamp(SimpleDateFormat("dd/MM/yyyy").parse(findViewById<EditText>(R.id.date_input).text.toString()))
 
         val shop = Shop(location.toString(),  price.toFloat(), date)
 
