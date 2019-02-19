@@ -19,13 +19,17 @@ class ViewShopActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_shop)
 
         shopService.getShops { shopCalculation ->
-            val totalSpent = "%.2f".format(shopCalculation.totalSpent)
+            val totalSpent = "%.2f".format(shopCalculation.yearTotal)
             val currentWeekTotal = "%.2f".format(shopCalculation.currentWeekTotal)
             val currentMonthTotal = "%.2f".format(shopCalculation.currentMonthTotal)
+            val weeklyAverage = "%.2f".format(shopCalculation.weeklyAverage)
+            val monthlyAverage = "%.2f".format(shopCalculation.monthlyAverage)
 
             findViewById<TextView>(R.id.year_total_value).text = "${currency.symbol}$totalSpent"
             findViewById<TextView>(R.id.week_total_value).text = "${currency.symbol}$currentWeekTotal"
             findViewById<TextView>(R.id.month_total_value).text = "${currency.symbol}$currentMonthTotal"
+            findViewById<TextView>(R.id.week_average_value).text = "${currency.symbol}$weeklyAverage"
+            findViewById<TextView>(R.id.month_average_value).text = "${currency.symbol}$monthlyAverage"
         }
 
     }

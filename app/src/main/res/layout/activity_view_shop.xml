@@ -10,9 +10,9 @@
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_width="0dp" android:id="@+id/year_total_layout"
-            app:layout_constraintEnd_toStartOf="@+id/week_total_layout" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/layout" android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/month_total_layout"
             android:background="@color/squareBackground">
 
         <TextView
@@ -22,7 +22,7 @@
                 android:id="@+id/year_total_text" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent" android:textSize="30sp"/>
+                app:layout_constraintTop_toTopOf="parent" android:textSize="24sp" android:textAlignment="center"/>
         <TextView
                 android:text="@string/default_price"
                 android:layout_width="wrap_content"
@@ -36,17 +36,42 @@
             android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_width="0dp" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/year_total_layout" android:id="@+id/week_total_layout"
+            app:layout_constraintStart_toEndOf="@+id/year_total_layout" android:id="@+id/layout"
             android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout5" android:background="@color/squareBackground">
+            app:layout_constraintBottom_toTopOf="@+id/week_total_layout" android:background="@color/squareBackground"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/year_total_layout" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:id="@+id/month_total_layout"
+            app:layout_constraintEnd_toStartOf="@+id/week_total_layout" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
+            android:background="@color/squareBackground">
 
         <TextView
-                android:text="@string/week_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/month_total_text"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:textSize="24sp"
+                android:layout_marginStart="8dp" android:text="@string/month_total" android:layout_marginEnd="8dp"
+                android:textAlignment="center"/>
+        <TextView
+                android:text="@string/default_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/week_total_text" android:textSize="30sp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:id="@+id/month_total_value"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:textSize="30sp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/layout"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/month_total_layout" android:layout_marginStart="8dp"
+            android:id="@+id/week_total_layout" android:layout_marginTop="8dp"
+            android:layout_height="0dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/week_average_layout" android:background="@color/squareBackground">
         <TextView
                 android:text="@string/default_price"
                 android:layout_width="wrap_content"
@@ -54,57 +79,62 @@
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/week_total_value" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" android:textSize="30sp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/year_total_layout" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:id="@+id/constraintLayout4"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout5" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
-            android:background="@color/squareBackground">
-
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/month_total_text"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:textSize="30sp"
-                android:layout_marginStart="8dp" android:text="@string/month_total" android:layout_marginEnd="8dp"/>
-        <TextView
-                android:text="@string/default_price"
+                android:text="@string/week_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/month_total_value" android:layout_marginEnd="68dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="63dp" android:textSize="30sp" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/week_total_text" android:textSize="24sp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" android:textAlignment="center"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/week_total_layout"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout4" android:layout_marginStart="8dp"
-            android:id="@+id/constraintLayout5" android:layout_marginTop="8dp"
-            android:layout_height="0dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout6" android:background="@color/squareBackground"/>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" android:id="@+id/constraintLayout6"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout7" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/week_total_layout" android:id="@+id/week_average_layout"
+            app:layout_constraintStart_toEndOf="@+id/month_average_layout" android:layout_marginStart="8dp"
             android:background="@color/squareBackground">
 
+        <TextView
+                android:text="@string/week_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/week_average_text" android:textSize="24sp"
+                android:textAlignment="center"/>
+        <TextView
+                android:text="@string/default_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/week_average_value"
+                android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/month_total_layout" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6" android:layout_marginEnd="8dp"
-            android:id="@+id/constraintLayout7" android:background="@color/squareBackground">
+            app:layout_constraintEnd_toStartOf="@+id/week_average_layout" android:layout_marginEnd="8dp"
+            android:id="@+id/month_average_layout" android:background="@color/squareBackground">
 
+        <TextView
+                android:text="@string/default_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/month_average_value"
+                android:textSize="30sp" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+        <TextView
+                android:text="@string/month_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/month_average_text" android:textSize="24sp"
+                android:textAlignment="center"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

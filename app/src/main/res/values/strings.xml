@@ -9,5 +9,7 @@
     <string name="year_total">Year Total</string>
     <string name="week_total">Week Total</string>
     <string name="month_total">Month Total</string>
+    <string name="week_average">Week Average</string>
+    <string name="month_average">Month Average</string>
     <string name="default_price">£00.00</string>
 </resources>

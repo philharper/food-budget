@@ -4,11 +4,11 @@ import com.google.firebase.firestore.QuerySnapshot
 import uk.co.philharper.foodbudget.dao.ShopDao
 import uk.co.philharper.foodbudget.entity.Shop
 import uk.co.philharper.foodbudget.entity.ShopCalculations
+import java.util.*
 
 class ShopService {
 
     private val shopDao = ShopDao()
-    var success: Boolean = false
     var shops = mutableListOf<Shop>()
 
 
@@ -22,7 +22,7 @@ class ShopService {
 
     private fun populateList(document: QuerySnapshot, callback: (ShopCalculations) -> Unit) {
         shops = document.toObjects(Shop::class.java)
-        val shopCalculation = ShopCalculations(shops)
+        val shopCalculation = ShopCalculations(shops, Calendar.getInstance())
         callback(shopCalculation)
     }
 
