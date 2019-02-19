@@ -29,9 +29,13 @@ class ShopCalculations(shops: List<Shop>, calendar: Calendar) {
     private fun addPriceToYearTotal(shop: Shop) {
         if (isShopInCurrentYear(currentCalendar, shop)) {
             yearTotal += shop.price
-            if (!isShopInCurrentMonth(currentCalendar, shop)) {
-                yearTotalExcludingCurrentMonth += shop.price
-            }
+            addToYearTotalExcludingCurrentMonth(shop)
+        }
+    }
+
+    private fun addToYearTotalExcludingCurrentMonth(shop: Shop) {
+        if (!isShopInCurrentMonth(currentCalendar, shop)) {
+            yearTotalExcludingCurrentMonth += shop.price
         }
     }
 

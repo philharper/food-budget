@@ -22,6 +22,8 @@ class ShopCalculationsTest {
 
     private val weekInMilliseconds = 604800L
 
+    private var shops = ArrayList<Shop>()
+
     @Mock
     lateinit var currentCalendar: Calendar
 
@@ -37,7 +39,6 @@ class ShopCalculationsTest {
 
     @Test
     fun yearTotalIsPopulatedWithCurrentYearsTotalSpend() {
-        var shops = ArrayList<Shop>()
         shops.add(Shop("A", 2.0f, Timestamp(dateLastYear, 0)))
         shops.add(Shop("B", 1.0f, Timestamp(currentTestDate, 0)))
 
@@ -48,7 +49,6 @@ class ShopCalculationsTest {
 
     @Test
     fun currentWeekTotalIsPopulatedWithCurrentWeeksTotalSpend() {
-        var shops = ArrayList<Shop>()
         shops.add(Shop("A", 2.0f, Timestamp(dateLastWeek, 0)))
         shops.add(Shop("B", 1.0f, Timestamp(currentTestDate, 0)))
 
@@ -59,7 +59,6 @@ class ShopCalculationsTest {
 
     @Test
     fun currentMonthTotalIsPopulatedWithCurrentMonthsTotalSpend() {
-        var shops = ArrayList<Shop>()
         shops.add(Shop("A", 2.0f, Timestamp(dateLastMonth, 0)))
         shops.add(Shop("B", 1.0f, Timestamp(currentTestDate, 0)))
 
@@ -70,7 +69,6 @@ class ShopCalculationsTest {
 
     @Test
     fun weeklyAverageCalculatesAverageSpend() {
-        var shops = ArrayList<Shop>()
         var week = firstWeekInYear
         shops.add(Shop("A", 2.0f, Timestamp(week, 0)))
         shops.add(Shop("B", 3.0f, Timestamp(week + (weekInMilliseconds * 1), 0)))
@@ -86,7 +84,6 @@ class ShopCalculationsTest {
 
     @Test
     fun monthlyAverageIsCalculatedTakingDayOfMonthIntoAccount() {
-        var shops = ArrayList<Shop>()
         shops.add(Shop("A", 50.0f, Timestamp(dateLastMonth, 0)))
         shops.add(Shop("B", 50.0f, Timestamp(currentTestDate, 0)))
 
