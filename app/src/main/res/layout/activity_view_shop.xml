@@ -8,12 +8,12 @@
         tools:context="activity.ViewShopActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="0dp" android:id="@+id/year_total_layout"
-            app:layout_constraintEnd_toStartOf="@+id/layout" android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/month_total_layout"
-            android:background="@color/squareBackground">
+            app:layout_constraintEnd_toStartOf="@+id/layout"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/month_total_layout"
+            android:background="@drawable/tile_background">
 
         <TextView
                 android:text="@string/year_total"
@@ -34,19 +34,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_width="0dp" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_width="0dp"
             app:layout_constraintStart_toEndOf="@+id/year_total_layout" android:id="@+id/layout"
-            android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/week_total_layout" android:background="@color/squareBackground"/>
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/week_total_layout" android:background="@drawable/tile_background"/>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="0dp" android:layout_marginTop="8dp"
+            android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@+id/year_total_layout" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:id="@+id/month_total_layout"
-            app:layout_constraintEnd_toStartOf="@+id/week_total_layout" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
-            android:background="@color/squareBackground">
+            android:id="@+id/month_total_layout"
+            app:layout_constraintEnd_toStartOf="@+id/week_total_layout"
+            app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
+            android:background="@drawable/tile_background">
 
         <TextView
                 android:layout_width="wrap_content"
@@ -67,11 +66,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             app:layout_constraintTop_toBottomOf="@+id/layout"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/month_total_layout" android:layout_marginStart="8dp"
-            android:id="@+id/week_total_layout" android:layout_marginTop="8dp"
-            android:layout_height="0dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/week_average_layout" android:background="@color/squareBackground">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/month_total_layout"
+            android:id="@+id/week_total_layout"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/week_average_layout" android:background="@drawable/tile_background">
         <TextView
                 android:text="@string/default_price"
                 android:layout_width="wrap_content"
@@ -89,12 +88,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="0dp" android:layout_marginEnd="8dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/week_total_layout" android:id="@+id/week_average_layout"
-            app:layout_constraintStart_toEndOf="@+id/month_average_layout" android:layout_marginStart="8dp"
-            android:background="@color/squareBackground">
+            app:layout_constraintStart_toEndOf="@+id/month_average_layout"
+            android:background="@drawable/tile_background">
 
         <TextView
                 android:text="@string/week_average"
@@ -115,11 +113,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/month_total_layout" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/week_average_layout" android:layout_marginEnd="8dp"
-            android:id="@+id/month_average_layout" android:background="@color/squareBackground">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/month_total_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/week_average_layout"
+            android:id="@+id/month_average_layout" android:background="@drawable/tile_background">
 
         <TextView
                 android:text="@string/default_price"

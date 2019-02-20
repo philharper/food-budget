@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
-    <Button
+    <com.google.android.material.button.MaterialButton
             android:text="@string/add_shop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
             android:id="@+id/button5" android:onClick="addShop" android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="32dp"
     />
-    <Button
+    <com.google.android.material.button.MaterialButton
             android:text="View Shops"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

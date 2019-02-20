@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import uk.co.philharper.foodbudget.R
 import uk.co.philharper.foodbudget.service.ShopService
 import java.util.*
@@ -35,17 +34,17 @@ class ViewShopActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.week_average_value).text = "${currency.symbol}$weeklyAverage"
             findViewById<TextView>(R.id.month_average_value).text = "${currency.symbol}$monthlyAverage"
 
-            setLayoutBackground(currentWeekTotal, R.id.week_total_layout, "WeeklyBudget")
-            setLayoutBackground(weeklyAverage, R.id.week_average_layout, "WeeklyBudget")
-            setLayoutBackground(currentMonthTotal, R.id.month_total_layout, "MonthlyBudget")
-            setLayoutBackground(monthlyAverage, R.id.month_average_layout, "MonthlyBudget")
+            setLayoutBackground(currentWeekTotal, R.id.week_total_value, "WeeklyBudget")
+            setLayoutBackground(weeklyAverage, R.id.week_average_value, "WeeklyBudget")
+            setLayoutBackground(currentMonthTotal, R.id.month_total_value, "MonthlyBudget")
+            setLayoutBackground(monthlyAverage, R.id.month_average_value, "MonthlyBudget")
         }
 
     }
 
     private fun setLayoutBackground(value: String, layout: Int, sharedPreferencesItem: String) {
         if (value.toFloat() > sharedPreferences.getFloat(sharedPreferencesItem, 0.0f)) {
-            findViewById<ConstraintLayout>(layout).background = getDrawable(R.color.overBudget)
+            findViewById<TextView>(layout).setTextColor(resources.getColor(R.color.overBudget, theme))
         }
     }
 
