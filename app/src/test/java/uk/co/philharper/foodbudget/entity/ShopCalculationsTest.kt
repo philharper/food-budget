@@ -83,13 +83,14 @@ class ShopCalculationsTest {
     }
 
     @Test
-    fun monthlyAverageIsCalculatedTakingDayOfMonthIntoAccount() {
-        shops.add(Shop("A", 50.0f, Timestamp(dateLastMonth, 0)))
-        shops.add(Shop("B", 50.0f, Timestamp(currentTestDate, 0)))
+    fun monthlyAverageIsCalculatedForPreviousMonths() {
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+        shops.add(Shop("B", 100.0f, Timestamp(dateLastMonth, 0)))
+        shops.add(Shop("C", 50.0f, Timestamp(currentTestDate, 0)))
 
         val shopCalculations = ShopCalculations(shops, currentCalendar)
 
-        assertThat(shopCalculations.monthlyAverage, `is`(equalTo(50.0)))
+        assertThat(shopCalculations.monthlyAverage, `is`(equalTo(200.0)))
     }
 
 }
