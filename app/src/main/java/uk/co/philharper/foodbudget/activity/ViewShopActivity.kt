@@ -1,18 +1,16 @@
 package uk.co.philharper.foodbudget.activity
 
 import android.content.SharedPreferences
-import android.icu.util.Currency
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import uk.co.philharper.foodbudget.R
 import uk.co.philharper.foodbudget.service.ShopService
-import java.util.*
 
 class ViewShopActivity : AppCompatActivity() {
 
-    val currency = Currency.getInstance(Locale.getDefault())
+    private val currency = "£"
     lateinit var sharedPreferences: SharedPreferences
     private val shopService = ShopService()
 
@@ -28,11 +26,11 @@ class ViewShopActivity : AppCompatActivity() {
             val weeklyAverage = "%.2f".format(shopCalculation.weeklyAverage)
             val monthlyAverage = "%.2f".format(shopCalculation.monthlyAverage)
 
-            findViewById<TextView>(R.id.year_total_value).text = "${currency.symbol}$totalSpent"
-            findViewById<TextView>(R.id.week_total_value).text = "${currency.symbol}$currentWeekTotal"
-            findViewById<TextView>(R.id.month_total_value).text = "${currency.symbol}$currentMonthTotal"
-            findViewById<TextView>(R.id.week_average_value).text = "${currency.symbol}$weeklyAverage"
-            findViewById<TextView>(R.id.month_average_value).text = "${currency.symbol}$monthlyAverage"
+            findViewById<TextView>(R.id.year_total_value).text = "${currency}$totalSpent"
+            findViewById<TextView>(R.id.week_total_value).text = "${currency}$currentWeekTotal"
+            findViewById<TextView>(R.id.month_total_value).text = "${currency}$currentMonthTotal"
+            findViewById<TextView>(R.id.week_average_value).text = "${currency}$weeklyAverage"
+            findViewById<TextView>(R.id.month_average_value).text = "${currency}$monthlyAverage"
 
             setLayoutBackground(currentWeekTotal, R.id.week_total_value, "WeeklyBudget")
             setLayoutBackground(weeklyAverage, R.id.week_average_value, "WeeklyBudget")
