@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewShops() {
-        val intent = Intent(this, ViewShopActivity::class.java)
+        val intent = Intent(this, ListShopsActivity::class.java)
         startActivity(intent)
     }
 }

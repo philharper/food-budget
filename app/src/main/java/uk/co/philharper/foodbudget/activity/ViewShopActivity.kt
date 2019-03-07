@@ -10,6 +10,7 @@ import uk.co.philharper.foodbudget.service.ShopService
 
 class ViewShopActivity : AppCompatActivity() {
 
+    val a: String? = null
     private val currency = "£"
     lateinit var sharedPreferences: SharedPreferences
     private val shopService = ShopService()
@@ -19,7 +20,7 @@ class ViewShopActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_shop)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        shopService.getShops { shopCalculation ->
+        shopService.getShopCalculations { shopCalculation ->
             val totalSpent = "%.2f".format(shopCalculation.yearTotal)
             val currentWeekTotal = "%.2f".format(shopCalculation.currentWeekTotal)
             val currentMonthTotal = "%.2f".format(shopCalculation.currentMonthTotal)
