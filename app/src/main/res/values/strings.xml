@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Food Budget</string>
     <string name="add_shop_button">Add New Shop</string>
+    <string name="view_shops_button">View Shops</string>
     <string name="location_text">Location</string>
     <string name="price_text">Price</string>
     <string name="date_text">Date</string>

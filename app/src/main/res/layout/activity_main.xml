@@ -11,14 +11,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/button5" android:onClick="addShop" android:layout_marginBottom="32dp"
+            android:id="@+id/add_new_shop_btn" android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="32dp"
     />
     <com.google.android.material.button.MaterialButton
-            android:text="View Shops"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
+            android:id="@+id/view_shops_btn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:onClick="viewShops"/>
+            android:text="@string/view_shops_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

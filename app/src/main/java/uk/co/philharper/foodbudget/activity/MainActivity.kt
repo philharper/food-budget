@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import uk.co.philharper.foodbudget.R
 
@@ -13,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById<Button>(R.id.add_new_shop_btn).setOnClickListener { addShop() }
+        findViewById<Button>(R.id.view_shops_btn).setOnClickListener { viewShops() }
+
         var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         var editor = sharedPreferences.edit()
         editor.putFloat("WeeklyBudget", 50.0f)
@@ -20,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         editor.commit()
     }
 
-    fun addShop(view: View) {
+    private fun addShop() {
         val intent = Intent(this, AddShopActivity::class.java)
         startActivity(intent)
     }
 
-    fun viewShops(view: View) {
+    private fun viewShops() {
         val intent = Intent(this, ViewShopActivity::class.java)
         startActivity(intent)
     }
