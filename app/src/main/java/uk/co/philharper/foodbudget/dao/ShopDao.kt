@@ -1,5 +1,6 @@
 package uk.co.philharper.foodbudget.dao
 
+import android.widget.Toast
 import com.google.firebase.firestore.QuerySnapshot
 import uk.co.philharper.foodbudget.firebase.FirebaseConnection
 import uk.co.philharper.foodbudget.entity.Shop
@@ -18,6 +19,15 @@ class ShopDao {
         firebase.collection(collection).get().addOnSuccessListener {
             querySnapshot ->  listener(querySnapshot)
         }
+    }
+
+    fun deleteShop(shop: Shop, listener: () -> Unit) {
+        firebase.collection(collection)
+            .whereEqualTo("location", shop.location)
+            .whereEqualTo("price", shop.price)
+            .whereEqualTo("date", shop.date).get().addOnSuccessListener {
+                listener()
+            }
     }
 
 }

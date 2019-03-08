@@ -23,6 +23,10 @@ class ShopService {
         shopDao.getShops { querySnapshot ->  populateList(querySnapshot, callback) }
     }
 
+    fun deleteShop(shop: Shop, callback: () -> Unit) {
+        shopDao.deleteShop(shop, callback)
+    }
+
     private fun populateList(document: QuerySnapshot, callback: (ShopCalculations) -> Unit) {
         shops = document.toObjects(Shop::class.java)
         val shopCalculation = ShopCalculations(shops, Calendar.getInstance())
