@@ -63,21 +63,21 @@
                 android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone" android:id="@+id/shop_date_picker"
                 android:background="@android:color/background_light" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/button" android:elevation="2dp" />
+                app:layout_constraintBottom_toTopOf="@+id/save_shop_btn" android:elevation="2dp" />
     <Button
             android:text="@string/save_shop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/button" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:onClick="saveShop"/>
+            android:id="@+id/save_shop_btn" android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:id="@+id/select_date_btn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
             app:layout_constraintStart_toEndOf="@+id/date_input" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="@+id/date_input"
-            app:layout_constraintBottom_toBottomOf="@+id/date_input" android:onClick="displayDatePicker"
+            app:layout_constraintBottom_toBottomOf="@+id/date_input"
             android:text="@string/select_date_button" android:elevation="1dp"/>
     <TextView
             android:text="£"

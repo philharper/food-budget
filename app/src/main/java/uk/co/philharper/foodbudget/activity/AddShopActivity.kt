@@ -24,10 +24,13 @@ class AddShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_shop)
 
+        findViewById<Button>(R.id.select_date_btn).setOnClickListener { displayDatePicker() }
+        findViewById<Button>(R.id.save_shop_btn).setOnClickListener { saveShop() }
+
         val calendar = Calendar.getInstance()
 
-        val datePicker = findViewById<DatePicker>(R.id.shop_date_picker)
-        datePicker.init(
+        val shopDatePicker = findViewById<DatePicker>(R.id.shop_date_picker)
+        shopDatePicker.init(
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
@@ -39,7 +42,7 @@ class AddShopActivity : AppCompatActivity() {
         propertiesDao.getLocations { document -> onSuccessListener(document) }
     }
 
-    fun saveShop(view: View) {
+    private fun saveShop() {
         val location = findViewById<Spinner>(R.id.location_input).selectedItem
         val price = findViewById<TextView>(R.id.price_input).text.toString()
         val date = Timestamp(SimpleDateFormat("dd/MM/yyyy").parse(findViewById<EditText>(R.id.date_input).text.toString()))
@@ -49,7 +52,7 @@ class AddShopActivity : AppCompatActivity() {
         shopService.saveShop(shop)
     }
 
-    fun displayDatePicker(view: View) {
+    private fun displayDatePicker() {
         val shopDatePicker = findViewById<DatePicker>(R.id.shop_date_picker)
         shopDatePicker.bringToFront()
         shopDatePicker.visibility = View.VISIBLE

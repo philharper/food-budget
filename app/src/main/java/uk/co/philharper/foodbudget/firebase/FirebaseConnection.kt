@@ -4,6 +4,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseConnection {
 
-    val firestore = FirebaseFirestore.getInstance();
+    val firestore = FirebaseFirestore.getInstance()
 
 }
