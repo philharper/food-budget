@@ -3,7 +3,6 @@ package uk.co.philharper.foodbudget.activity
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import uk.co.philharper.foodbudget.R

@@ -9,7 +9,7 @@ import java.util.*
 class ShopService {
 
     private val shopDao = ShopDao()
-    var shops = mutableListOf<Shop>()
+    private var shops = mutableListOf<Shop>()
 
 
     fun saveShop(shop: Shop) {
