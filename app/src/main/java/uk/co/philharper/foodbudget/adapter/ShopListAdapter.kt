@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import uk.co.philharper.foodbudget.R
@@ -12,10 +11,11 @@ import uk.co.philharper.foodbudget.entity.Shop
 import uk.co.philharper.foodbudget.service.ShopService
 import java.text.SimpleDateFormat
 
-class ShopListAdapter(private val shops: List<Shop>) : RecyclerView.Adapter<ShopListAdapter.MyViewHolder>() {
+class ShopListAdapter(private val shops: List<Shop>, deleteShopCallBack: () -> Unit) : RecyclerView.Adapter<ShopListAdapter.MyViewHolder>() {
 
     private val shopService = ShopService()
     lateinit var parent: ViewGroup
+    private val callBack = deleteShopCallBack;
 
     class MyViewHolder(val constraintLayout: ConstraintLayout) : RecyclerView.ViewHolder(constraintLayout)
 
@@ -32,17 +32,13 @@ class ShopListAdapter(private val shops: List<Shop>) : RecyclerView.Adapter<Shop
         holder.constraintLayout.findViewById<TextView>(R.id.recycler_view_date).text = simpleDateFormat.format(shop.date.toDate())
         holder.constraintLayout.findViewById<TextView>(R.id.recycler_view_location).text = shop.location
         holder.constraintLayout.findViewById<TextView>(R.id.shop_price).text = "£${shop.price}"
-        holder.constraintLayout.findViewById<Button>(R.id.delete_shop_btn).setOnClickListener { deleteShop(position, shop) }
+        holder.constraintLayout.findViewById<Button>(R.id.delete_shop_btn).setOnClickListener { deleteShop(position, shop, callBack) }
     }
 
     override fun getItemCount() = shops.size
 
-    private fun deleteShop(position: Int, shop: Shop) {
-        shopService.deleteShop(shop, notifyShopDeleted())
+    private fun deleteShop(position: Int, shop: Shop, callBack: () -> Unit) {
+        shopService.deleteShop(shop, callBack)
         notifyItemRemoved(position)
-    }
-
-    private fun notifyShopDeleted() {
-        Toast.makeText(parent, "Shop Deleted", Toast.LENGTH_LONG)
     }
 }

@@ -2,6 +2,7 @@ package uk.co.philharper.foodbudget.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uk.co.philharper.foodbudget.R
@@ -28,12 +29,18 @@ class ListShopsActivity : AppCompatActivity() {
     }
 
     private fun populateShops(shops: List<Shop>) {
-        viewAdapter = ShopListAdapter(shops)
+        viewAdapter = ShopListAdapter(shops, deleteShopCallBack = notifyShopDeletion())
 
         recyclerView = findViewById<RecyclerView>(R.id.list_shops_view).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
+        }
+    }
+
+    private fun notifyShopDeletion(): () -> Unit {
+        return {
+            Toast.makeText(this, "Shop Deleted", Toast.LENGTH_LONG)
         }
     }
 }
