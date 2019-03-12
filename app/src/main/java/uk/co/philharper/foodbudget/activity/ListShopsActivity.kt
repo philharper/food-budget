@@ -29,7 +29,8 @@ class ListShopsActivity : AppCompatActivity() {
     }
 
     private fun populateShops(shops: List<Shop>) {
-        viewAdapter = ShopListAdapter(shops, deleteShopCallBack = notifyShopDeletion())
+        val sortedShops = shops.sortedBy { it.date }
+        viewAdapter = ShopListAdapter(sortedShops, deleteShopCallBack = notifyShopDeletion())
 
         recyclerView = findViewById<RecyclerView>(R.id.list_shops_view).apply {
             setHasFixedSize(true)

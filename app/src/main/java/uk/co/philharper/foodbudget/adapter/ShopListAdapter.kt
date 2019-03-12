@@ -40,5 +40,6 @@ class ShopListAdapter(private val shops: List<Shop>, deleteShopCallBack: () -> U
     private fun deleteShop(position: Int, shop: Shop, callBack: () -> Unit) {
         shopService.deleteShop(shop, callBack)
         notifyItemRemoved(position)
+        notifyItemRangeChanged(position,shops.size);
     }
 }
