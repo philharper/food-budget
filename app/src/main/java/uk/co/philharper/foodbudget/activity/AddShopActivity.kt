@@ -1,7 +1,9 @@
 package uk.co.philharper.foodbudget.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
@@ -50,6 +52,10 @@ class AddShopActivity : AppCompatActivity() {
         val shop = Shop(location.toString(),  price.toFloat(), date)
 
         shopService.saveShop(shop)
+
+        Toast.makeText(this, "Shop Saved", Toast.LENGTH_LONG)
+
+        finish()
     }
 
     private fun displayDatePicker() {
