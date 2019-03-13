@@ -11,11 +11,10 @@ import uk.co.philharper.foodbudget.entity.Shop
 import uk.co.philharper.foodbudget.service.ShopService
 import java.text.SimpleDateFormat
 
-class ShopListAdapter(private val shops: List<Shop>, deleteShopCallBack: () -> Unit) : RecyclerView.Adapter<ShopListAdapter.MyViewHolder>() {
+class ShopListAdapter(private val shops: MutableList<Shop>) : RecyclerView.Adapter<ShopListAdapter.MyViewHolder>() {
 
     private val shopService = ShopService()
     lateinit var parent: ViewGroup
-    private val callBack = deleteShopCallBack;
 
     class MyViewHolder(val constraintLayout: ConstraintLayout) : RecyclerView.ViewHolder(constraintLayout)
 
@@ -32,14 +31,15 @@ class ShopListAdapter(private val shops: List<Shop>, deleteShopCallBack: () -> U
         holder.constraintLayout.findViewById<TextView>(R.id.recycler_view_date).text = simpleDateFormat.format(shop.date.toDate())
         holder.constraintLayout.findViewById<TextView>(R.id.recycler_view_location).text = shop.location
         holder.constraintLayout.findViewById<TextView>(R.id.shop_price).text = "£${shop.price}"
-        holder.constraintLayout.findViewById<Button>(R.id.delete_shop_btn).setOnClickListener { deleteShop(position, shop, callBack) }
+        holder.constraintLayout.findViewById<Button>(R.id.delete_shop_btn).setOnClickListener { deleteShop(position, shop) }
     }
 
     override fun getItemCount() = shops.size
 
-    private fun deleteShop(position: Int, shop: Shop, callBack: () -> Unit) {
-        shopService.deleteShop(shop, callBack)
+    private fun deleteShop(position: Int, shop: Shop) {
+        shops.remove(shop)
+        shopService.deleteShop(shop)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position,shops.size);
+        notifyItemRangeChanged(position, shops.size)
     }
 }

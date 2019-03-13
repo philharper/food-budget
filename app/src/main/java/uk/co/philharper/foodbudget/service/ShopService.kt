@@ -23,8 +23,8 @@ class ShopService {
         shopDao.getShops { querySnapshot ->  populateList(querySnapshot, callback) }
     }
 
-    fun deleteShop(shop: Shop, callback: () -> Unit) {
-        shopDao.deleteShop(shop, callback)
+    fun deleteShop(shop: Shop) {
+        shopDao.deleteShop(shop)
     }
 
     private fun populateList(document: QuerySnapshot, callback: (ShopCalculations) -> Unit) {

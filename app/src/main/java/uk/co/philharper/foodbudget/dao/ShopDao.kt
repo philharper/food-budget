@@ -12,7 +12,10 @@ class ShopDao {
     private val firebase = FirebaseConnection().firestore
 
     fun saveShop(shop: Shop) {
-        firebase.collection(collection).add(shop)
+        val documentReference = firebase.collection(collection).document()
+        shop.id = documentReference.id
+
+        documentReference.set(shop)
     }
 
     fun getShops(listener: (QuerySnapshot) -> Unit) {
@@ -21,13 +24,8 @@ class ShopDao {
         }
     }
 
-    fun deleteShop(shop: Shop, listener: () -> Unit) {
-        firebase.collection(collection)
-            .whereEqualTo("location", shop.location)
-            .whereEqualTo("price", shop.price)
-            .whereEqualTo("date", shop.date).get().addOnSuccessListener {
-                listener()
-            }
+    fun deleteShop(shop: Shop) {
+        firebase.collection(collection).document(shop.id).delete()
     }
 
 }

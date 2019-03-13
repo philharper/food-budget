@@ -16,7 +16,7 @@ class ListShopsActivity : AppCompatActivity() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private val shopService = ShopService();
+    private val shopService = ShopService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,19 +29,13 @@ class ListShopsActivity : AppCompatActivity() {
     }
 
     private fun populateShops(shops: List<Shop>) {
-        val sortedShops = shops.sortedBy { it.date }
-        viewAdapter = ShopListAdapter(sortedShops, deleteShopCallBack = notifyShopDeletion())
+        var sortedShops = shops.sortedBy { it.date }
+        viewAdapter = ShopListAdapter(sortedShops.toMutableList())
 
         recyclerView = findViewById<RecyclerView>(R.id.list_shops_view).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
-        }
-    }
-
-    private fun notifyShopDeletion(): () -> Unit {
-        return {
-            Toast.makeText(this, "Shop Deleted", Toast.LENGTH_LONG)
         }
     }
 }
