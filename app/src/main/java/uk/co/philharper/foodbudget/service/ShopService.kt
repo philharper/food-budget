@@ -11,13 +11,20 @@ class ShopService {
     private val shopDao = ShopDao()
     private var shops = mutableListOf<Shop>()
 
-
     fun saveShop(shop: Shop) {
         shopDao.saveShop(shop)
     }
 
-    fun getShops(callback: (ShopCalculations) -> Unit) {
+    fun getShops(callback: (List<Shop>) -> Unit) {
+        shopDao.getShops { document -> callback(document.toObjects(Shop::class.java)) }
+    }
+
+    fun getShopCalculations(callback: (ShopCalculations) -> Unit) {
         shopDao.getShops { querySnapshot ->  populateList(querySnapshot, callback) }
+    }
+
+    fun deleteShop(shop: Shop) {
+        shopDao.deleteShop(shop)
     }
 
     private fun populateList(document: QuerySnapshot, callback: (ShopCalculations) -> Unit) {

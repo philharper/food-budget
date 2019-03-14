@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.add_new_shop_btn).setOnClickListener { addShop() }
         findViewById<Button>(R.id.view_shops_btn).setOnClickListener { viewShops() }
+        findViewById<Button>(R.id.shop_calculations_btn).setOnClickListener { viewShopAverages() }
 
         var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         var editor = sharedPreferences.edit()
@@ -29,6 +30,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewShops() {
+        val intent = Intent(this, ListShopsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun viewShopAverages() {
         val intent = Intent(this, ViewShopActivity::class.java)
         startActivity(intent)
     }
