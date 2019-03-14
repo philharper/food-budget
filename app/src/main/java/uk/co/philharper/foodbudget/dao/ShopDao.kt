@@ -1,9 +1,8 @@
 package uk.co.philharper.foodbudget.dao
 
-import android.widget.Toast
 import com.google.firebase.firestore.QuerySnapshot
-import uk.co.philharper.foodbudget.firebase.FirebaseConnection
 import uk.co.philharper.foodbudget.entity.Shop
+import uk.co.philharper.foodbudget.firebase.FirebaseConnection
 
 class ShopDao {
 
