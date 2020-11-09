@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.add_new_shop_btn).setOnClickListener { addShop() }
 
+        getData()
+    }
+
+    private fun getData() {
         shopService.getShopCalculations { shopCalculation ->
             val totalSpent = "%.2f".format(shopCalculation.yearTotal)
             val currentWeekTotal = "%.2f".format(shopCalculation.currentWeekTotal)
@@ -33,9 +37,6 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.year_total_value).text = "${currency}$totalSpent"
             findViewById<TextView>(R.id.week_total_value).text = "${currency}$currentWeekTotal"
             findViewById<TextView>(R.id.month_total_value).text = "${currency}$currentMonthTotal"
-
-//            setLayoutBackground(currentWeekTotal, R.id.week_total_value, "WeeklyBudget")
-//            setLayoutBackground(currentMonthTotal, R.id.month_total_value, "MonthlyBudget")
         }
     }
 
@@ -52,6 +53,11 @@ class MainActivity : AppCompatActivity() {
 
         R.id.shops_action -> {
             viewShops()
+            true
+        }
+
+        R.id.refresh_data -> {
+            getData()
             true
         }
 
@@ -74,10 +80,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, PropertiesActivity::class.java)
         startActivity(intent)
     }
-
-//    private fun setLayoutBackground(value: String, layout: Int, sharedPreferencesItem: String) {
-//        if (value.toFloat() > sharedPreferences.getFloat(sharedPreferencesItem, 0.0f)) {
-//            findViewById<TextView>(layout).setTextColor(resources.getColor(R.color.overBudget, theme))
-//        }
-//    }
 }
