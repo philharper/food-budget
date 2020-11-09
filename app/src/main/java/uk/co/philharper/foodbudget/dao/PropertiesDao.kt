@@ -1,6 +1,7 @@
 package uk.co.philharper.foodbudget.dao
 
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
+import uk.co.philharper.foodbudget.entity.Properties
 import uk.co.philharper.foodbudget.firebase.FirebaseConnection
 
 class PropertiesDao {
@@ -9,10 +10,17 @@ class PropertiesDao {
 
     private val firebase = FirebaseConnection().firestore
 
-    fun getLocations(listener: (DocumentSnapshot) -> Unit) {
+    fun saveProperties(properties: Properties) {
+        val documentReference = firebase.collection(collection).document()
+        properties.id = documentReference.id
 
-        firebase.collection(collection).document("kWdQ5g4g930wxHZzWi7R")
-            .get().addOnSuccessListener { document -> listener(document) }
+        documentReference.set(properties)
+    }
+
+    fun getProperties(listener: (QuerySnapshot) -> Unit) {
+        firebase.collection(collection).get().addOnSuccessListener {
+            querySnapshot ->  listener(querySnapshot)
+        }
     }
 
 }

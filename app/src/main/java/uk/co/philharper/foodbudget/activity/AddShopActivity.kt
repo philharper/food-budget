@@ -1,18 +1,14 @@
 package uk.co.philharper.foodbudget.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.DocumentSnapshot
 import uk.co.philharper.foodbudget.R
-import uk.co.philharper.foodbudget.dao.PropertiesDao
-import uk.co.philharper.foodbudget.dao.ShopDao
 import uk.co.philharper.foodbudget.entity.Properties
 import uk.co.philharper.foodbudget.entity.Shop
+import uk.co.philharper.foodbudget.service.PropertiesService
 import uk.co.philharper.foodbudget.service.ShopService
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,7 +16,7 @@ import java.util.*
 class AddShopActivity : AppCompatActivity() {
 
     private val shopService = ShopService()
-    private val propertiesDao = PropertiesDao()
+    private val propertiesService = PropertiesService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +37,7 @@ class AddShopActivity : AppCompatActivity() {
                 datePicker.visibility = View.GONE
             })
 
-        propertiesDao.getLocations { document -> onSuccessListener(document) }
+        propertiesService.getProperties { document -> populateProperties(document) }
     }
 
     private fun saveShop() {
@@ -53,7 +49,7 @@ class AddShopActivity : AppCompatActivity() {
 
         shopService.saveShop(shop)
 
-        Toast.makeText(this, "Shop Saved", Toast.LENGTH_LONG)
+        Toast.makeText(this, "Shop Saved", Toast.LENGTH_LONG).show();
 
         finish()
     }
@@ -64,8 +60,8 @@ class AddShopActivity : AppCompatActivity() {
         shopDatePicker.visibility = View.VISIBLE
     }
 
-    private fun onSuccessListener(document: DocumentSnapshot) {
-        val locationAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, document.toObject(Properties::class.java)?.locations)
+    private fun populateProperties(properties: List<Properties>) {
+        val locationAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, properties[0].locations)
         findViewById<Spinner>(R.id.location_input).adapter = locationAdapter
     }
 }

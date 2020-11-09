@@ -6,27 +6,145 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
-    <com.google.android.material.button.MaterialButton
-            android:text="@string/add_shop_button"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/year_total_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/tile_background"
+        app:layout_constraintBottom_toTopOf="@+id/month_total_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/year_total_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/year_total"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/add_new_shop_btn"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/year_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/default_price"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/year_total_layout" app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/month_total_layout"
+        app:layout_constraintEnd_toStartOf="@+id/week_total_layout"
+        app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
+        android:background="@drawable/tile_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/month_total_text"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp" android:textSize="24sp"
+            android:layout_marginStart="8dp" android:text="@string/month_total" android:layout_marginEnd="8dp"
+            android:textAlignment="center"/>
+        <TextView
+            android:text="@string/default_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/month_total_value"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:textSize="30sp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
-    <com.google.android.material.button.MaterialButton
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/week_total_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/tile_background"
+        app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_total_layout"
+        app:layout_constraintTop_toBottomOf="@+id/year_total_layout">
+
+        <TextView
+            android:id="@+id/week_total_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/view_shops_btn"
-            android:text="@string/view_shops_button"
-            app:layout_constraintTop_toBottomOf="@+id/add_new_shop_btn" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <com.google.android.material.button.MaterialButton
+            android:layout_marginBottom="8dp"
+            android:text="@string/default_price"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/week_total_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/shop_calculations_btn" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/view_shops_btn" tools:text="@string/view_shop_averages"
-            android:text="@string/view_shop_averages"/>
+            android:layout_marginTop="8dp"
+            android:text="@string/week_total"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/week_average_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/tile_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_average_layout"
+        app:layout_constraintTop_toBottomOf="@+id/week_total_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/month_average_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/tile_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_total_layout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_new_shop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
