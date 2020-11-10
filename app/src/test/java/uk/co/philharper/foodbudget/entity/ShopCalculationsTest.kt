@@ -1,6 +1,7 @@
 package uk.co.philharper.foodbudget.entity
 
 import com.google.firebase.Timestamp
+import junit.framework.Assert.assertTrue
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -93,4 +94,34 @@ class ShopCalculationsTest {
         assertThat(shopCalculations.monthlyAverage, `is`(equalTo(200.0)))
     }
 
+    @Test
+    fun shopTotalsContainsValueOfShop() {
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+
+        val shopCalculations = ShopCalculations(shops, currentCalendar)
+
+        assertThat(shopCalculations.shopTotals["A"], `is`(equalTo(100.0F)))
+    }
+
+    @Test
+    fun shopTotalsAddsPriceOfSameLocation() {
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+
+        val shopCalculations = ShopCalculations(shops, currentCalendar)
+
+        assertThat(shopCalculations.shopTotals["A"], `is`(equalTo(200.0F)))
+    }
+
+    @Test
+    fun shopTotalsAddsMultipleLocations() {
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+        shops.add(Shop("A", 100.0f, Timestamp(dateLastMonth, 0)))
+        shops.add(Shop("B", 300.0f, Timestamp(dateLastMonth, 0)))
+
+        val shopCalculations = ShopCalculations(shops, currentCalendar)
+
+        assertThat(shopCalculations.shopTotals["A"], `is`(equalTo(200.0F)))
+        assertThat(shopCalculations.shopTotals["B"], `is`(equalTo(300.0F)))
+    }
 }

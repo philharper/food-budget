@@ -21,9 +21,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/year_total_layout"
+        android:id="@+id/week_total_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:background="@drawable/tile_background"
         app:layout_constraintBottom_toTopOf="@+id/month_total_layout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +31,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
-            android:id="@+id/year_total_text"
+            android:id="@+id/week_total_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/year_total"
+            android:text="@string/week_total"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/year_total_value"
+            android:id="@+id/week_total_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -60,10 +60,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/year_total_layout" app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/week_total_layout" app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/month_total_layout"
-        app:layout_constraintEnd_toStartOf="@+id/week_total_layout"
+        app:layout_constraintEnd_toStartOf="@+id/year_total_layout"
         app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
         android:background="@drawable/tile_background">
 
@@ -85,17 +85,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/week_total_layout"
+        android:id="@+id/year_total_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/tile_background"
         app:layout_constraintBottom_toTopOf="@+id/month_average_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/month_total_layout"
-        app:layout_constraintTop_toBottomOf="@+id/year_total_layout">
+        app:layout_constraintTop_toBottomOf="@+id/week_total_layout">
 
         <TextView
-            android:id="@+id/week_total_value"
+            android:id="@+id/year_total_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -106,26 +106,18 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/week_total_text"
+            android:id="@+id/year_total_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/week_total"
+            android:text="@string/year_total"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/week_average_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/tile_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/month_average_layout"
-        app:layout_constraintTop_toBottomOf="@+id/week_total_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/month_average_layout"
@@ -135,7 +127,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month_total_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/month_total_layout" >
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/year_total_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new_shop_btn"

@@ -1,14 +1,17 @@
 package uk.co.philharper.foodbudget.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import uk.co.philharper.foodbudget.R
 import uk.co.philharper.foodbudget.service.ShopService
@@ -37,6 +40,18 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.year_total_value).text = "${currency}$totalSpent"
             findViewById<TextView>(R.id.week_total_value).text = "${currency}$currentWeekTotal"
             findViewById<TextView>(R.id.month_total_value).text = "${currency}$currentMonthTotal"
+
+            val pieEntries = mutableListOf<PieEntry>()
+            for (shopTotal in shopCalculation.shopTotals) {
+                pieEntries.add(PieEntry(shopTotal.value, shopTotal.key))
+            }
+            val pieDataSet = PieDataSet(pieEntries, "");
+            pieDataSet.colors = ColorTemplate.JOYFUL_COLORS.asList()
+
+            val pieChart = findViewById<PieChart>(R.id.year_total_chart)
+            pieChart.data = PieData(pieDataSet)
+            pieChart.invalidate()
+
         }
     }
 

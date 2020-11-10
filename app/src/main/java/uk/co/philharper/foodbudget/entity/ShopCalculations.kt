@@ -1,6 +1,7 @@
 package uk.co.philharper.foodbudget.entity
 
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class ShopCalculations(shops: List<Shop>, calendar: Calendar) {
@@ -13,6 +14,7 @@ class ShopCalculations(shops: List<Shop>, calendar: Calendar) {
     var currentMonthTotal = 0.0
     var weeklyAverage = 0.0
     var monthlyAverage = 0.0
+    var shopTotals : HashMap<String, Float> = HashMap()
 
     init {
 
@@ -20,6 +22,7 @@ class ShopCalculations(shops: List<Shop>, calendar: Calendar) {
             addPriceToYearTotal(shop)
             addPriceToCurrentWeekTotalIfThisWeek(shop)
             addPriceToCurrentMonthTotal(shop)
+            addToShopTotals(shop)
         }
 
         calculateWeeklyAverage()
@@ -79,5 +82,14 @@ class ShopCalculations(shops: List<Shop>, calendar: Calendar) {
 
     private fun calculateMonthlyAverage() {
         monthlyAverage = yearTotalExcludingCurrentMonth / currentCalendar.get(Calendar.MONTH)
+    }
+
+    private fun addToShopTotals(shop: Shop) {
+        if (shopTotals.containsKey(shop.location)) {
+            var currentValue = shopTotals[shop.location]
+            shopTotals[shop.location] = shop.price.plus(currentValue!!)
+        } else {
+            shopTotals[shop.location] = shop.price
+        }
     }
 }
